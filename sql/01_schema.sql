@@ -44,6 +44,11 @@ CREATE TABLE `items` (
     `category_id`,
     `created_at` DESC,
     `id` DESC
+  ),
+  INDEX idx_status_created_at_id (
+    `status`,
+    `created_at` DESC,
+    `id` DESC
   )
 ) ENGINE = InnoDB DEFAULT CHARACTER SET utf8mb4;
 
