@@ -45,7 +45,11 @@ CREATE TABLE `items` (
     `created_at` DESC,
     `id` DESC
   ),
-  INDEX idx_created_at_id (`created_at` DESC, `id` DESC)
+  INDEX idx_status_created_at_id (
+    `status`,
+    `created_at` DESC,
+    `id` DESC
+  )
 ) ENGINE = InnoDB DEFAULT CHARACTER SET utf8mb4;
 
 DROP TABLE IF EXISTS `transaction_evidences`;
