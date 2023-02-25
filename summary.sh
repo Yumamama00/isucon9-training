@@ -10,4 +10,4 @@ sudo cat /var/log/nginx/access.log | alp ltsv -m '/new_items/.*,/users/.*,/items
 sudo cat /var/log/nginx/access.log | alp ltsv -m '/new_items/.*,/users/.*,/items/.*,/buy,/sell,/ship,/ship_done,/complete,/transactions/.*,/bump,/settings,/login,/register,/reports.json,/upload/.*,/static/.*' --sort avg -r > /tmp/alp-grouped-avg.txt
 
 # スロークエリ解析結果を出力
-sudo pt-query-digest /var/log/mysql/mysql-slow.log > /tmp/pt-query-digest.txt
+sudo pt-query-digest --filter '$event->{arg} =~ m/^select/i' --limit '100%:20' /var/log/mysql/mysql-slow.log > /tmp/pt-query-digest.txt
